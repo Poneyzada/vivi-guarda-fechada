@@ -16,9 +16,9 @@
                         bjjs: {
                             bg: '#050508', /* Preto Extremo */
                             panel: '#0B0B10', /* Preto Levemente Roxo/Chumbo */
-                            pink: '#c11236', /* Rosa/Vermelho Mais Fechado (Garantia/Autoridade) */
-                            pinkDark: '#880d26', /* Rosa Escuro */
-                            pinkLight: '#e44c68', /* Rosa Claro para Highlights */
+                            pink: '#e8879d', /* Rosa neutro e suave */
+                            pinkDark: '#c95b77', /* Rosa Escuro suave */
+                            pinkLight: '#ffb5c6', /* Rosa Claro para Highlights */
                             gray: '#a1a1aa'
                         }
                     },
@@ -165,12 +165,12 @@
         <img src="vitoria-logo.png" alt="Logo VV"
             class="h-10 w-auto filter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
         
-        <div class="flex items-center gap-6">
-            <a href="#home" class="hidden md:block text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors">Home</a>
-            <a href="#curso" class="hidden md:block text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors">A Jornada</a>
+        <div class="flex items-center gap-3 md:gap-6">
+            <a href="#home" class="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors">Home</a>
+            <a href="#curso" class="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors">A Jornada</a>
             
             <a href="https://www.instagram.com/vivieirabjj?igsh=MXcxdDRxejBzczE3Ng==" target="_blank" class="text-white/60 hover:text-bjjs-pink transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="md:w-5 md:h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
 
             <button onclick="openT3Filter()"
@@ -186,14 +186,12 @@
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-bjjs-pink/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none">
         </div>
-        <!-- Foto de Fundo Ajustada ('Diminuída de leve' pelo max-w) -->
-        <div class="absolute inset-0 z-0 flex justify-center bg-bjjs-bg">
-            <img src="vv.jpg" alt="Vitória Vieira" class="w-full max-w-[1400px] h-full object-cover object-bottom opacity-60">
+        <!-- Foto de Fundo Restaurada 100% Tela -->
+        <div class="absolute inset-0 z-0 bg-bjjs-bg">
+            <img src="vv.jpg" alt="Vitória Vieira" class="w-full h-full object-cover object-[center_top] opacity-60">
             <!-- Blur Preto -->
             <div class="absolute inset-0 bg-black/20 backdrop-blur-[2px]"></div>
-            <!-- Fade Gradiente para fundir as bordas suaves se a tela for gigante -->
             <div class="absolute inset-0 bg-gradient-to-t from-bjjs-bg via-transparent to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-bjjs-bg via-transparent to-bjjs-bg"></div>
         </div>
 
         <div class="relative z-20 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -289,7 +287,7 @@
     </section>
 
     <!-- TIMELINE (O CRONOGRAMA ESTILO LEBRON) -->
-    <section id="curso" class="py-24 px-6 lg:px-12 relative bg-[url('armlock-foto.jpg')] bg-cover bg-scroll md:bg-fixed bg-center">
+    <section id="curso" class="py-24 px-6 lg:px-12 relative bg-[url('armlock-foto.jpg')] bg-cover bg-fixed bg-center">
         <!-- Overlay Super Escuro para deixar a textura no fundo sutil -->
         <div class="absolute inset-0 bg-bjjs-bg/95"></div>
         <div class="max-w-7xl mx-auto relative z-10">
@@ -409,7 +407,7 @@
     </section>
 
     <!-- DOSSIÊ DA ATLETA (FIGHTER STATS) -->
-    <section class="py-24 relative overflow-hidden flex justify-center px-6 bg-[url('nogi-foto.jpg')] bg-cover bg-[center_20%] bg-scroll md:bg-fixed">
+    <section class="py-24 relative overflow-hidden flex justify-center px-6 bg-[url('nogi-foto.jpg')] bg-cover bg-[center_20%] bg-fixed">
         <div class="absolute inset-0 bg-black/85"></div>
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.08)_0%,rgba(0,0,0,0)_70%)] pointer-events-none"></div>
         
@@ -522,7 +520,7 @@
     </section>
 
     <!-- BLOCO DE GARANTIA (7 DIAS) -->
-    <section class="py-24 bg-bjjs-panel border-y border-white/5 relative overflow-hidden bg-[url('garantia-foto.jpg')] bg-cover bg-[center_20%] bg-scroll md:bg-fixed">
+    <section class="py-24 bg-bjjs-panel border-y border-white/5 relative overflow-hidden bg-[url('garantia-foto.jpg')] bg-cover bg-top bg-fixed">
         <!-- Overlay Escuro sobre a foto de fundo -->
         <div class="absolute inset-0 bg-black/80"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
