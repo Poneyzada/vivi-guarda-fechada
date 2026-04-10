@@ -430,6 +430,29 @@
                         <p class="font-heading text-3xl uppercase tracking-wider text-white">Peso Leve <span class="text-lg text-white/50">(64Kg)</span></p>
                     </div>
                 </div>
+
+                <!-- Títulos (Hall of Fame) -->
+                <div class="mt-8 border-t border-white/10 pt-6">
+                    <p class="text-[10px] font-black uppercase text-white/40 tracking-widest mb-4">Conquistas de Elite no Tatame</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans text-xs md:text-sm text-white/80">
+                        <li class="flex items-start gap-2">
+                            <span class="text-bjjs-pink font-black">🥇</span> 
+                            <span class="leading-tight"><strong class="text-white block uppercase text-[10px] tracking-widest">Campeã (2024)</strong> CBJJ Brasileiro (Gi & NoGI)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-bjjs-pink font-black">🥇</span> 
+                            <span class="leading-tight"><strong class="text-white block uppercase text-[10px] tracking-widest">Campeã Mundial (Faixa Marrom)</strong> IBJJF World (2021)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-bjjs-pink font-black">🥇</span> 
+                            <span class="leading-tight"><strong class="text-white block uppercase text-[10px] tracking-widest">Campeã (2023)</strong> AJP Grand Slam RJN</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-bjjs-pink font-black">🌍</span> 
+                            <span class="leading-tight"><strong class="text-white block uppercase text-[10px] tracking-widest">Mundial & Europeu (IBJJF)</strong> Medalhista Faixa Preta</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Coluna 2: Cartel Estilo UFC -->
@@ -486,19 +509,19 @@
     </section>
 
     <!-- BLOCO DE GARANTIA (7 DIAS) -->
-    <section class="py-20 bg-bjjs-panel border-y border-white/5 relative overflow-hidden">
-        <div class="absolute inset-0 bg-bjjs-pink/5 blur-[100px] mix-blend-screen pointer-events-none"></div>
+    <section class="py-24 bg-bjjs-panel border-y border-white/5 relative overflow-hidden bg-[url('fundo-garantia.jpg')] bg-cover bg-center bg-fixed">
+        <!-- Overlay Escuro sobre a foto de fundo -->
+        <div class="absolute inset-0 bg-black/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+        <div class="absolute inset-0 bg-bjjs-pink/10 blur-[100px] mix-blend-screen pointer-events-none"></div>
+        
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
 
-            <!-- Shield Icon (SVG) -->
-            <div
-                class="w-20 h-20 mb-6 bg-bjjs-bg border border-bjjs-pink/30 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(193,18,54,0.2)]">
-                <svg class="w-10 h-10 text-bjjs-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                    </path>
-                </svg>
+            <!-- Shield Icon (Selo Imagem) -->
+            <div class="mb-8 relative group">
+                <div class="absolute inset-0 bg-bjjs-pink/20 blur-[30px] rounded-full group-hover:bg-bjjs-pink/40 transition-all"></div>
+                <!-- Poneyzada: AQUI ENTRA A FOTO DO SELO -->
+                <img src="selo-garantia.png" alt="Selo de 7 Dias" class="w-28 md:w-36 h-auto relative z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] filter opacity-100 object-contain hover:scale-105 transition-all">
             </div>
 
             <h2 class="title-massive text-4xl md:text-5xl uppercase text-white mb-4">GARANTIA INCONDICIONAL DE <span
