@@ -186,11 +186,14 @@
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-bjjs-pink/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none">
         </div>
-        <!-- Foto de Fundo com Blur Preto 20 -->
-        <div class="absolute inset-0 z-0">
-            <img src="vv.jpg" alt="Vitória Vieira" class="w-full h-full object-cover object-top md:object-[center_60%] opacity-60">
+        <!-- Foto de Fundo Ajustada (Object Contain para não cortar a atleta) -->
+        <div class="absolute inset-0 z-0 flex justify-center lg:justify-end lg:pr-20">
+            <img src="vv.jpg" alt="Vitória Vieira" class="w-full max-w-[800px] h-full object-contain object-bottom md:object-center opacity-60">
+            <!-- Blur Preto -->
             <div class="absolute inset-0 bg-black/20 backdrop-blur-[2px]"></div>
+            <!-- Fade Gradiente para fundir as bordas naturais da foto no preto absoluto -->
             <div class="absolute inset-0 bg-gradient-to-t from-bjjs-bg via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-bjjs-bg via-transparent to-bjjs-bg"></div>
         </div>
 
         <div class="relative z-20 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
