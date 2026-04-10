@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitória Vieira | Guarda Fechada</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bjjs: {
+                            bg: '#050508', /* Preto Extremo */
+                            panel: '#0B0B10', /* Preto Levemente Roxo/Chumbo */
+                            pink: '#c11236', /* Rosa/Vermelho Mais Fechado (Garantia/Autoridade) */
+                            pinkDark: '#880d26', /* Rosa Escuro */
+                            pinkLight: '#e44c68', /* Rosa Claro para Highlights */
+                            gray: '#a1a1aa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'Teko', 'sans-serif'], /* Fonte Agressiva / Condensada */
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.06%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700;800&family=Teko:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #050508;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fontes de Impacto */
+        .title-massive {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 800;
+            line-height: 0.9;
+        }
+
+        .title-accent {
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .pink-glow {
+            text-shadow: 0 0 30px rgba(225, 29, 72, 0.7), 0 0 10px rgba(225, 29, 72, 0.5);
+        }
+
+        .pink-glow-box {
+            box-shadow: 0 0 40px rgba(225, 29, 72, 0.3);
+        }
+
+        /* Animação Marquee */
+        .marquee {
+            display: flex;
+            width: max-content;
+            animation: scroll-marquee 20s linear infinite;
+        }
+
+        @keyframes scroll-marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Estilo Botão Premium */
+        .btn-premium {
+            background: #e11d48;
+            color: #000;
+            box-shadow: 0 10px 20px -5px rgba(225, 29, 72, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px -5px rgba(225, 29, 72, 0.8);
+            background: #f43f5e;
+        }
+
+        /* Modal Blur */
+        #modal-backdrop {
+            backdrop-filter: blur(10px);
+            transition: opacity 0.3s ease;
+        }
+
+        #modal-panel {
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-active #modal-panel {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Timeline Styles */
+        .timeline-line {
+            width: 4px;
+            background: linear-gradient(to bottom, transparent, #e11d48, transparent);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #e11d48;
+            border-radius: 50%;
+            border: 4px solid #050508;
+            box-shadow: 0 0 15px #e11d48;
+            z-index: 10;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-noise bg-bjjs-bg">
+
+    <!-- NAVBAR INVISÍVEL / MINIMAL -->
+    <nav
+        class="absolute top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
+        <img src="vitoria-logo.png" alt="Logo VV"
+            class="h-12 w-auto filter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+        <button onclick="openT3Filter()"
+            class="hidden md:block text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white border-b-2 border-transparent hover:border-bjjs-pink pb-1 transition-all">
+            Falar com a Vitória
+        </button>
+    </nav>
+
+    <!-- HERO SECTION (THE CROWN) -->
+    <section class="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 overflow-hidden">
+        <!-- Luz de Fundo (O Glow do LeBron) -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-bjjs-pink/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none">
+        </div>
+
+        <!-- Foto Principal Recortada (Placeholder Poneyzada) -->
+        <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] z-10 pointer-events-none opacity-80 mix-blend-luminosity grayscale contrast-125">
+            <img src="vitoria-hero.png" alt="Vitória Vieira"
+                class="w-full h-auto object-contain object-bottom mask-image-b">
+        </div>
+
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Texto Esquerda (Agressivo) -->
+            <div class="text-left space-y-6 lg:pr-10">
+                <img src="vitoria-logo.png" class="h-16 w-auto mb-4 opacity-80" alt="Logo Pequena">
+
+                <h1
+                    class="title-massive text-6xl md:text-[5.5rem] lg:text-[7rem] text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] flex flex-col">
+                    <span class="text-bjjs-pink">O SEGREDO DA</span>
+                    <span>GUARDA</span>
+                    <span>FECHADA</span>
+                </h1>
+
+                <p
+                    class="font-sans text-lg md:text-xl text-white/80 font-medium max-w-md leading-relaxed border-l-4 border-bjjs-pink pl-4">
+                    Pare de aceitar raspagens. O método definitivo de engenharia de alavancas e controle psicológico de
+                    Vitória Vieira.
+                </p>
+
+                <div class="pt-6 flex flex-col sm:flex-row gap-4 w-full max-w-[400px]">
+                    <a href="https://checkout.com"
+                        class="btn-premium w-full py-5 text-center font-heading font-black text-2xl uppercase tracking-wider rounded-sm">
+                        GARANTIR VAGA
+                    </a>
+                </div>
+            </div>
+
+            <!-- Direita (Assinatura e Imagem) -->
+            <div class="hidden lg:flex flex-col items-end justify-center h-full relative">
+                <!-- Espaço para a foto principal da Vitória ficar aqui / sobrepor -->
+
+                <!-- Assinatura (Placeholder) -->
+                <div class="absolute bottom-20 right-10 transform -rotate-6 z-30">
+                    <img src="vitoria-logo.png"
+                        class="h-24 opacity-50 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                        alt="Sua Assinatura Aqui">
+                    <p class="text-[10px] text-white/40 uppercase tracking-[0.3em] text-right mt-2 font-bold">Faixa
+                        Preta BJJ</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAIXAS DIAGONAIS (Dual Ribbon LeBron Style) -->
+        <!-- Faixa de Fundo (Blurred) -->
+        <div
+            class="absolute bottom-16 w-[120vw] -left-[10vw] transform rotate-2 bg-bjjs-pinkDark/60 z-30 overflow-hidden shadow-[0_0_50px_rgba(193,18,54,0.6)] blur-sm">
+            <div class="marquee py-3 flex text-black opacity-30">
+                <span class="title-accent text-3xl font-black uppercase tracking-wider whitespace-nowrap px-8">NÃO
+                    ACEITE A RASPAGEM • DOMINE A GUARDA FECHADA • VITÓRIA VIEIRA BJJ •</span>
+                <span class="title-accent text-3xl font-black uppercase tracking-wider whitespace-nowrap px-8">NÃO
+                    ACEITE A RASPAGEM • DOMINE A GUARDA FECHADA • VITÓRIA VIEIRA BJJ •</span>
+                <span class="title-accent text-3xl font-black uppercase tracking-wider whitespace-nowrap px-8">NÃO
+                    ACEITE A RASPAGEM • DOMINE A GUARDA FECHADA • VITÓRIA VIEIRA BJJ •</span>
+            </div>
+        </div>
+
+        <!-- Faixa Principal -->
+        <div
+            class="absolute bottom-10 w-[120vw] -left-[10vw] transform -rotate-3 bg-bjjs-pink z-40 overflow-hidden shadow-[0_0_30px_rgba(193,18,54,0.5)] border-y-2 border-white/20">
+            <div class="marquee py-3 flex text-black">
+                <span
+                    class="title-accent text-3xl font-black uppercase tracking-wider whitespace-nowrap px-8 text-black drop-shadow-md">NÃO
+                    ACEITE A RASPAGEM • DOMINE A GUARDA FECHADA • VITÓRIA VIEIRA BJJ •</span>
+                <span
+                    class="title-accent text-3xl font-black uppercase tracking-wider whitespace-nowrap px-8 text-black drop-shadow-md">NÃO
+                    ACEITE A RASPAGEM • DOMINE A GUARDA FECHADA • VITÓRIA VIEIRA BJJ •</span>
+                <span
+                    class="title-accent text-3xl font-black uppercase tracking-wider whitespace-nowrap px-8 text-black drop-shadow-md">NÃO
+                    ACEITE A RASPAGEM • DOMINE A GUARDA FECHADA • VITÓRIA VIEIRA BJJ •</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO ROSA MACIÇO CTA (Estilo Bloco Amarelo LeBron) -->
+    <section class="bg-bjjs-pink py-20 px-6 text-center text-black border-y-4 border-bjjs-pinkDark relative z-50">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <h2 class="title-massive text-5xl md:text-6xl uppercase leading-none drop-shadow-sm">
+                NÃO ACEITE A RASPAGEM.<br>DOMINE A GUARDA FECHADA!
+            </h2>
+            <p class="font-sans font-bold text-lg max-w-2xl mx-auto text-black/80">
+                O SEGREDO DA VITÓRIA: UM SISTEMA INFALÍVEL COM LAPELAS E ARMLOCKS. INSCREVA-SE AGORA E TRANSFORME O SEU
+                JOGO DE CHÃO.
+            </p>
+            <div class="pt-4">
+                <a href="https://checkout.com"
+                    class="inline-block bg-black text-white hover:bg-gray-900 border border-black/50 px-12 py-5 font-heading font-black text-2xl uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-2xl">
+                    ACESSAR O MÉTODO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE (O CRONOGRAMA ESTILO LEBRON) -->
+    <section class="py-24 px-6 lg:px-12 bg-bjjs-bg relative">
+        <div class="max-w-7xl mx-auto relative">
+            <div class="text-center mb-20 relative z-20">
+                <img src="vitoria-logo.png" class="h-10 mx-auto opacity-40 mb-4">
+                <span
+                    class="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-white/50 block mb-2">Cronograma
+                    do Curso</span>
+                <h2 class="title-massive text-5xl text-bjjs-pink">ACOMPANHE A JORNADA DE ELITE</h2>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="relative w-full pb-20">
+                <!-- A LINHA ROSA NEON -->
+                <div class="timeline-line"></div>
+
+                <!-- Modulo 1 (Esquerda) -->
+                <div class="relative flex justify-center md:justify-start items-center w-full mb-24">
+                    <div class="timeline-dot hidden md:block"></div>
+                    <!-- Card Esquerda -->
+                    <div
+                        class="w-full md:w-[45%] bg-bjjs-panel border border-white/5 p-1 flex flex-col sm:flex-row shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-bjjs-pink/50 transition-colors z-20 relative group">
+                        <!-- Imagem do Modulo -->
+                        <div class="w-full sm:w-2/5 aspect-[4/5] bg-black relative overflow-hidden">
+                            <!-- Poneyzada: Foto de golpe aqui -->
+                            <img src="vitoria-hero.png"
+                                class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
+                            <div
+                                class="absolute inset-0 border-2 border-bjjs-pink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            </div>
+                        </div>
+                        <!-- Texto do Modulo -->
+                        <div class="w-full sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center">
+                            <span class="text-[10px] uppercase font-bold text-white/40 tracking-[0.2em] mb-2">Módulo
+                                1</span>
+                            <h3 class="title-accent text-3xl text-bjjs-pink leading-none mb-4">FUNDAMENTOS E PEGADAS
+                            </h3>
+                            <ul class="text-white/70 text-sm space-y-2 font-sans">
+                                <li>• Como anular o quadril do oponente.</li>
+                                <li>• O controle perfeito das mangas.</li>
+                                <li>• Erros comuns que levam à passagem.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modulo 2 (Direita) -->
+                <div class="relative flex justify-center md:justify-end items-center w-full mb-24">
+                    <div class="timeline-dot hidden md:block"></div>
+                    <!-- Card Direita -->
+                    <div
+                        class="w-full md:w-[45%] bg-bjjs-panel border border-white/5 p-1 flex flex-col sm:flex-row-reverse shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-bjjs-pink/50 transition-colors z-20 relative group">
+                        <!-- Imagem do Modulo -->
+                        <div class="w-full sm:w-2/5 aspect-[4/5] bg-black relative overflow-hidden">
+                            <!-- Poneyzada: Foto de golpe aqui -->
+                            <img src="vitoria-hero.png"
+                                class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 transform scale-x-[-1]">
+                            <div
+                                class="absolute inset-0 border-2 border-bjjs-pink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            </div>
+                        </div>
+                        <!-- Texto do Modulo -->
+                        <div class="w-full sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center text-left md:text-right">
+                            <span class="text-[10px] uppercase font-bold text-white/40 tracking-[0.2em] mb-2">Módulo
+                                2</span>
+                            <h3 class="title-accent text-3xl text-bjjs-pink leading-none mb-4">A CONEXÃO COM A LAPELA
+                            </h3>
+                            <ul class="text-white/70 text-sm space-y-2 font-sans md:mx-auto md:mr-0">
+                                <li>• Extraindo alavancas invisíveis.</li>
+                                <li>• Sistema de raspagem com lapela.</li>
+                                <li>• Prevenção de postura alta.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modulo 3 (Esquerda) -->
+                <div class="relative flex justify-center md:justify-start items-center w-full mb-24">
+                    <div class="timeline-dot hidden md:block"></div>
+                    <!-- Card Esquerda -->
+                    <div
+                        class="w-full md:w-[45%] bg-bjjs-panel border border-white/5 p-1 flex flex-col sm:flex-row shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:border-bjjs-pink/50 transition-colors z-20 relative group">
+                        <!-- Imagem do Modulo -->
+                        <div class="w-full sm:w-2/5 aspect-[4/5] bg-black relative overflow-hidden">
+                            <!-- Poneyzada: Foto de golpe aqui -->
+                            <img src="vitoria-hero.png"
+                                class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
+                            <div
+                                class="absolute inset-0 border-2 border-bjjs-pink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            </div>
+                        </div>
+                        <!-- Texto do Modulo -->
+                        <div class="w-full sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center">
+                            <span class="text-[10px] uppercase font-bold text-white/40 tracking-[0.2em] mb-2">Módulo
+                                3</span>
+                            <h3 class="title-accent text-3xl text-bjjs-pink leading-none mb-4">ASSASSINO: O ARMLOCK INFO
+                            </h3>
+                            <ul class="text-white/70 text-sm space-y-2 font-sans">
+                                <li>• O segredo para não perder a pegada.</li>
+                                <li>• Ângulos de quebra de base.</li>
+                                <li>• Finalizações duplas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Final da Timeline -->
+            <div class="text-center relative z-20 mt-10">
+                <button onclick="openT3Filter()"
+                    class="bg-black border border-white/10 hover:border-bjjs-pink text-white/80 hover:text-white px-8 py-4 font-sans font-bold text-sm tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(193,18,54,0.1)] hover:shadow-[0_0_40px_rgba(193,18,54,0.3)]">
+                    Tenho dúvidas sobre o método
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO DE GARANTIA (7 DIAS) -->
+    <section class="py-20 bg-bjjs-panel border-y border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-bjjs-pink/5 blur-[100px] mix-blend-screen pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
+
+            <!-- Shield Icon (SVG) -->
+            <div
+                class="w-20 h-20 mb-6 bg-bjjs-bg border border-bjjs-pink/30 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(193,18,54,0.2)]">
+                <svg class="w-10 h-10 text-bjjs-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                    </path>
+                </svg>
+            </div>
+
+            <h2 class="title-massive text-4xl md:text-5xl uppercase text-white mb-4">GARANTIA INCONDICIONAL DE <span
+                    class="text-bjjs-pink">7 DIAS</span></h2>
+            <p class="font-sans text-white/70 max-w-2xl text-base md:text-lg leading-relaxed mb-8">
+                O risco é todo meu. Se você entrar no treinamento "Guarda Fechada", aprender o método, aplicar as
+                alavancas e achar que não evoluiu o seu jogo, eu devolvo 100% do seu investimento. Sem burocracia, basta
+                um e-mail.
+            </p>
+
+            <a href="https://checkout.com"
+                class="btn-premium px-12 py-5 text-center font-heading font-black text-xl uppercase tracking-wider rounded-sm shadow-2xl">
+                ASSINAR SEM RISCO
+            </a>
+        </div>
+    </section>
+
+    <!-- MODAL T3 FILTER -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/95 z-[100] hidden flex items-center justify-center p-4">
+        <div id="modal-panel"
+            class="bg-bjjs-panel w-full max-w-lg border-2 border-bjjs-pink overflow-hidden shadow-[0_0_100px_rgba(225,29,72,0.2)] pb-4">
+
+            <div class="h-2 w-full bg-black">
+                <div class="h-full bg-bjjs-pink w-1/3"></div>
+            </div>
+
+            <!-- Header do Modal -->
+            <div class="px-8 pt-8 text-center relative">
+                <button onclick="closeT3Filter()"
+                    class="absolute top-6 right-6 text-white/40 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        </path>
+                    </svg>
+                </button>
+                <img src="vitoria-logo.png" class="h-8 mx-auto mb-4 opacity-50">
+                <h3 class="title-massive text-3xl text-bjjs-pink">SUPORTE ELITE</h3>
+                <p class="text-white/50 text-xs font-bold uppercase tracking-widest mt-1">Responda para falar com a
+                    Vitória</p>
+            </div>
+
+            <div class="p-8">
+                <!-- ETAPA 1: FAIXA -->
+                <div id="filter-step-1" class="space-y-4">
+                    <label
+                        class="block text-[11px] font-black uppercase tracking-[0.2em] text-white/70 mb-4 border-l-2 border-bjjs-pink pl-3">01.
+                        Qual sua faixa atual?</label>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button onclick="nextFilterStep(1, 'Branca/Azul')"
+                            class="w-full text-left p-5 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/10 transition-all text-sm font-bold uppercase tracking-widest text-white shadow-lg">Branca
+                            / Azul</button>
+                        <button onclick="nextFilterStep(1, 'Roxa/Marrom')"
+                            class="w-full text-left p-5 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/10 transition-all text-sm font-bold uppercase tracking-widest text-white shadow-lg">Roxa
+                            / Marrom</button>
+                        <button onclick="nextFilterStep(1, 'Preta')"
+                            class="w-full text-left p-5 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/10 transition-all text-sm font-bold uppercase tracking-widest text-white shadow-lg">Preta</button>
+                    </div>
+                </div>
+
+                <!-- ETAPA 2: FOCO -->
+                <div id="filter-step-2" class="hidden space-y-4">
+                    <label
+                        class="block text-[11px] font-black uppercase tracking-[0.2em] text-white/70 mb-4 border-l-2 border-bjjs-pink pl-3">02.
+                        Qual seu foco principal?</label>
+                    <div class="grid grid-cols-1 gap-3">
+                        <button onclick="nextFilterStep(2, 'Competição')"
+                            class="w-full text-left p-5 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/10 transition-all text-sm font-bold uppercase tracking-widest text-white shadow-lg">Competição</button>
+                        <button onclick="nextFilterStep(2, 'Hobby / Saúde')"
+                            class="w-full text-left p-5 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/10 transition-all text-sm font-bold uppercase tracking-widest text-white shadow-lg">Hobby
+                            / Saúde</button>
+                        <button onclick="nextFilterStep(2, 'Defesa Pessoal')"
+                            class="w-full text-left p-5 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/10 transition-all text-sm font-bold uppercase tracking-widest text-white shadow-lg">Defesa
+                            Pessoal</button>
+                    </div>
+                </div>
+
+                <!-- ETAPA 3: CONHECIMENTO -->
+                <div id="filter-step-3" class="hidden space-y-4">
+                    <label
+                        class="block text-[11px] font-black uppercase tracking-[0.2em] text-white/70 mb-4 border-l-2 border-bjjs-pink pl-3">03.
+                        Já conhece a Guarda Fechada?</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="finishFilter('Sim')"
+                            class="w-full p-8 border border-white/10 bg-black hover:border-green-500 hover:bg-green-500/20 transition-all text-lg font-black uppercase tracking-widest text-white shadow-lg">Sim</button>
+                        <button onclick="finishFilter('Não')"
+                            class="w-full p-8 border border-white/10 bg-black hover:border-bjjs-pink hover:bg-bjjs-pink/20 transition-all text-lg font-black uppercase tracking-widest text-white shadow-lg">Não</button>
+                    </div>
+                </div>
+
+                <!-- ETAPA FINAL -->
+                <div id="filter-step-final" class="hidden text-center py-6">
+                    <h4 class="title-massive text-4xl text-white mb-2">PERFIL VALIDADO</h4>
+                    <p class="text-white/50 text-[10px] font-bold uppercase tracking-widest mb-10">Acesso liberado ao
+                        WhatsApp direto da Vitória.</p>
+
+                    <a id="whatsapp-link" href="#" target="_blank"
+                        class="flex items-center justify-center gap-3 w-full py-5 bg-[#25D366] hover:bg-[#128C7E] text-black font-heading font-black text-2xl uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(37,211,102,0.3)]">
+                        INICIAR CHAT NO WHATSAPP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER MINIMALISTA -->
+    <footer class="py-16 bg-[#030305] border-t border-white/5 text-center px-4">
+        <img src="vitoria-logo.png" alt="Logo" class="h-12 opacity-30 mx-auto mb-6 grayscale mix-blend-luminosity">
+        <div class="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20 leading-relaxed font-sans">
+            © 2026 VITÓRIA VIEIRA JIU JITSU • TODOS OS DIREITOS RESERVADOS <br>
+            <span class="mt-2 block opacity-50">BUILT BY BOOM AGÊNCIA</span>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('modal-backdrop');
+        let filterData = { faixa: '', foco: '', conhece: '' };
+
+        function openT3Filter() {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('modal-active'), 10);
+            resetFilter();
+        }
+
+        function closeT3Filter() {
+            modal.classList.remove('modal-active');
+            setTimeout(() => modal.classList.add('hidden'), 400);
+        }
+
+        function resetFilter() {
+            document.getElementById('filter-step-1').classList.remove('hidden');
+            document.getElementById('filter-step-2').classList.add('hidden');
+            document.getElementById('filter-step-3').classList.add('hidden');
+            document.getElementById('filter-step-final').classList.add('hidden');
+        }
+
+        function nextFilterStep(currentStep, value) {
+            if (currentStep === 1) {
+                filterData.faixa = value;
+                document.getElementById('filter-step-1').classList.add('hidden');
+                document.getElementById('filter-step-2').classList.remove('hidden');
+            } else if (currentStep === 2) {
+                filterData.foco = value;
+                document.getElementById('filter-step-2').classList.add('hidden');
+                document.getElementById('filter-step-3').classList.remove('hidden');
+            }
+        }
+
+        function finishFilter(value) {
+            filterData.conhece = value;
+            document.getElementById('filter-step-3').classList.add('hidden');
+            document.getElementById('filter-step-final').classList.remove('hidden');
+
+            const phone = "55XXXXXXXXXXX"; // PODE ADAPTAR DEPOIS
+            let message = `Olá Vitória! Acessei seu site e respondi ao filtro de avaliação.\n\n🥋 *Minha Faixa:* ${filterData.faixa}\n🎯 *Meu Foco:* ${filterData.foco}\n💡 *Já conhecia o método?* ${filterData.conhece}\n\nQuero dominar a Guarda Fechada!`;
+
+            document.getElementById('whatsapp-link').href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        }
+    </script>
+</body>
+
+</html>
