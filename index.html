@@ -176,12 +176,11 @@
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-bjjs-pink/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none">
         </div>
-
-        <!-- Foto Principal Recortada (Placeholder Poneyzada) -->
-        <div
-            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] z-10 pointer-events-none opacity-80 mix-blend-luminosity grayscale contrast-125">
-            <img src="vitoria-hero.png" alt="Vitória Vieira"
-                class="w-full h-auto object-contain object-bottom mask-image-b">
+        <!-- Foto de Fundo com Blur Preto 20 -->
+        <div class="absolute inset-0 z-0">
+            <img src="vv.jpg" alt="Vitória Vieira" class="w-full h-full object-cover object-top opacity-60">
+            <div class="absolute inset-0 bg-black/20 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-bjjs-bg via-transparent to-transparent"></div>
         </div>
 
         <div class="relative z-20 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -279,14 +278,16 @@
     </section>
 
     <!-- TIMELINE (O CRONOGRAMA ESTILO LEBRON) -->
-    <section class="py-24 px-6 lg:px-12 bg-bjjs-bg relative">
-        <div class="max-w-7xl mx-auto relative">
+    <section class="py-24 px-6 lg:px-12 relative bg-[url('armlock-foto.jpg')] bg-cover bg-fixed bg-center">
+        <!-- Overlay Super Escuro para deixar a textura no fundo sutil -->
+        <div class="absolute inset-0 bg-bjjs-bg/95"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-20 relative z-20">
                 <img src="vitoria-logo.png" class="h-10 mx-auto opacity-40 mb-4">
                 <span
                     class="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-white/50 block mb-2">Cronograma
                     do Curso</span>
-                <h2 class="title-massive text-5xl text-bjjs-pink">ACOMPANHE A JORNADA DE ELITE</h2>
+                <h2 class="title-massive text-5xl md:text-6xl text-bjjs-pink">ACOMPANHE A JORNADA DA VIVI</h2>
             </div>
 
             <!-- Timeline Container -->
@@ -303,7 +304,7 @@
                         <!-- Imagem do Modulo -->
                         <div class="w-full sm:w-2/5 aspect-[4/5] bg-black relative overflow-hidden">
                             <!-- Poneyzada: Foto de golpe aqui -->
-                            <img src="vitoria-hero.png"
+                            <img src="ajp-champ.jpg"
                                 class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
                             <div
                                 class="absolute inset-0 border-2 border-bjjs-pink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -333,7 +334,7 @@
                         <!-- Imagem do Modulo -->
                         <div class="w-full sm:w-2/5 aspect-[4/5] bg-black relative overflow-hidden">
                             <!-- Poneyzada: Foto de golpe aqui -->
-                            <img src="vitoria-hero.png"
+                            <img src="br-medalha.jpg"
                                 class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 transform scale-x-[-1]">
                             <div
                                 class="absolute inset-0 border-2 border-bjjs-pink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -363,8 +364,8 @@
                         <!-- Imagem do Modulo -->
                         <div class="w-full sm:w-2/5 aspect-[4/5] bg-black relative overflow-hidden">
                             <!-- Poneyzada: Foto de golpe aqui -->
-                            <img src="vitoria-hero.png"
-                                class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
+                            <img src="br-podio.jpg"
+                                class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
                             <div
                                 class="absolute inset-0 border-2 border-bjjs-pink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                             </div>
@@ -397,8 +398,9 @@
     </section>
 
     <!-- DOSSIÊ DA ATLETA (FIGHTER STATS) -->
-    <section class="py-24 bg-[#050508] relative overflow-hidden flex justify-center px-6">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.08)_0%,rgba(5,5,8,1)_70%)] pointer-events-none"></div>
+    <section class="py-24 relative overflow-hidden flex justify-center px-6 bg-[url('nogi-foto.jpg')] bg-cover bg-center bg-fixed">
+        <div class="absolute inset-0 bg-black/85"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.08)_0%,rgba(0,0,0,0)_70%)] pointer-events-none"></div>
         
         <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
             <!-- Coluna 1: Biografia -->
@@ -509,7 +511,7 @@
     </section>
 
     <!-- BLOCO DE GARANTIA (7 DIAS) -->
-    <section class="py-24 bg-bjjs-panel border-y border-white/5 relative overflow-hidden bg-[url('fundo-garantia.jpg')] bg-cover bg-center bg-fixed">
+    <section class="py-24 bg-bjjs-panel border-y border-white/5 relative overflow-hidden bg-[url('garantia-foto.jpg')] bg-cover bg-center bg-fixed">
         <!-- Overlay Escuro sobre a foto de fundo -->
         <div class="absolute inset-0 bg-black/80"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
@@ -521,7 +523,7 @@
             <div class="mb-8 relative group">
                 <div class="absolute inset-0 bg-bjjs-pink/20 blur-[30px] rounded-full group-hover:bg-bjjs-pink/40 transition-all"></div>
                 <!-- Poneyzada: AQUI ENTRA A FOTO DO SELO -->
-                <img src="selo-garantia.png" alt="Selo de 7 Dias" class="w-28 md:w-36 h-auto relative z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] filter opacity-100 object-contain hover:scale-105 transition-all">
+                <img src="Selo_de_Garantia_de_7_Dias.png" alt="Selo de 7 Dias" class="w-32 md:w-44 h-auto relative z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] filter opacity-100 object-contain hover:scale-105 transition-all">
             </div>
 
             <h2 class="title-massive text-4xl md:text-5xl uppercase text-white mb-4">GARANTIA INCONDICIONAL DE <span
