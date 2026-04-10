@@ -204,7 +204,8 @@
                 </p>
 
                 <div class="pt-6 flex flex-col sm:flex-row gap-4 w-full max-w-[400px]">
-                    <a href="https://checkout.com"
+                    <!-- LINK DE COMPRA / CHECKOUT AQUI -->
+                    <a href="https://pay.kiwify.com.br/LINK_DA_VITORIA" target="_blank"
                         class="btn-premium w-full py-5 text-center font-heading font-black text-2xl uppercase tracking-wider rounded-sm">
                         GARANTIR VAGA
                     </a>
@@ -268,7 +269,8 @@
                 JOGO DE CHÃO.
             </p>
             <div class="pt-4">
-                <a href="https://checkout.com"
+                <!-- LINK DE COMPRA / CHECKOUT AQUI -->
+                <a href="https://pay.kiwify.com.br/LINK_DA_VITORIA" target="_blank"
                     class="inline-block bg-black text-white hover:bg-gray-900 border border-black/50 px-12 py-5 font-heading font-black text-2xl uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-2xl">
                     ACESSAR O MÉTODO
                 </a>
@@ -418,7 +420,8 @@
                 um e-mail.
             </p>
 
-            <a href="https://checkout.com"
+            <!-- LINK DE COMPRA / CHECKOUT AQUI -->
+            <a href="https://pay.kiwify.com.br/LINK_DA_VITORIA" target="_blank"
                 class="btn-premium px-12 py-5 text-center font-heading font-black text-xl uppercase tracking-wider rounded-sm shadow-2xl">
                 ASSINAR SEM RISCO
             </a>
@@ -562,7 +565,9 @@
             document.getElementById('filter-step-3').classList.add('hidden');
             document.getElementById('filter-step-final').classList.remove('hidden');
 
-            const phone = "55XXXXXXXXXXX"; // PODE ADAPTAR DEPOIS
+            // WHATSAPP DA VITÓRIA (COM CÓDIGO DO PAÍS E DDD, APENAS NÚMEROS)
+            const phone = "5521999999999"; 
+            
             let message = `Olá Vitória! Acessei seu site e respondi ao filtro de avaliação.\n\n🥋 *Minha Faixa:* ${filterData.faixa}\n🎯 *Meu Foco:* ${filterData.foco}\n💡 *Já conhecia o método?* ${filterData.conhece}\n\nQuero dominar a Guarda Fechada!`;
 
             document.getElementById('whatsapp-link').href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
